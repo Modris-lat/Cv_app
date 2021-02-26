@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Cv-App.Core\Cv-App.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
