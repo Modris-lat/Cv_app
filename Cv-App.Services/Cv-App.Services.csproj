@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Cv_App.Services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cv-App.Core\Cv-App.Core.csproj" />
+    <ProjectReference Include="..\Cv-App.Data\Cv-App.Data.csproj" />
+  </ItemGroup>
+
+</Project>
