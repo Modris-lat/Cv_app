@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Cv_App.ApiService</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cv-App.Core\Cv-App.Core.csproj" />
+    <ProjectReference Include="..\Cv-App.Data\Cv-App.Data.csproj" />
+    <ProjectReference Include="..\Cv-App.Services\Cv-App.Services.csproj" />
+  </ItemGroup>
+
+</Project>

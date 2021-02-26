@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cv-App.Data", "Cv-App.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cv-App.Services", "Cv-App.Services\Cv-App.Services.csproj", "{6DC41C1B-4F4B-44B2-A331-F12696F1D225}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cv-App.ApiService", "Cv-App.ApiService\Cv-App.ApiService.csproj", "{03151759-125C-429F-8863-2DBE9A20204C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6DC41C1B-4F4B-44B2-A331-F12696F1D225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DC41C1B-4F4B-44B2-A331-F12696F1D225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DC41C1B-4F4B-44B2-A331-F12696F1D225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03151759-125C-429F-8863-2DBE9A20204C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03151759-125C-429F-8863-2DBE9A20204C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03151759-125C-429F-8863-2DBE9A20204C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03151759-125C-429F-8863-2DBE9A20204C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
