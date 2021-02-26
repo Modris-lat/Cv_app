@@ -1,6 +1,5 @@
-*/**/bin/*
-*/**/obj/*
-*/**/packages/*
-*/**/.vs/*
-/packages/*
-/**/*.user
+.vs
+/**/packages/*
+/**/bin/*
+/**/obj/*
+/**/.vs/*
