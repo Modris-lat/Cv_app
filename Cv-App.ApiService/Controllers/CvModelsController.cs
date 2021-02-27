@@ -7,22 +7,23 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cv_App.Core.Models;
 using Cv_App.Data.Models;
+using Cv_App.Services.Interfaces;
 
 namespace Cv_App.ApiService.Controllers
 {
     public class CvModelsController : Controller
     {
-        private readonly CvAppContext _context;
+        private readonly ICvDataService _cvDataService;
 
-        public CvModelsController(CvAppContext context)
+        public CvModelsController(ICvDataService cvDataService)
         {
-            _context = context;
+            _cvDataService = cvDataService;
         }
 
         // GET: CvModels
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.CvModels.ToListAsync());
+            return View(_cvDataService.Get());
         }
 
         // GET: CvModels/Details/5
@@ -33,8 +34,7 @@ namespace Cv_App.ApiService.Controllers
                 return NotFound();
             }
 
-            var cvModel = await _context.CvModels
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var cvModel = await _cvDataService.GetById(id.Value);
             if (cvModel == null)
             {
                 return NotFound();
@@ -54,12 +54,11 @@ namespace Cv_App.ApiService.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] CvModel cvModel)
+        public IActionResult Create([Bind("Id")] CvModel cvModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cvModel);
-                await _context.SaveChangesAsync();
+                _cvDataService.Create(cvModel);
                 return RedirectToAction(nameof(Index));
             }
             return View(cvModel);
@@ -73,7 +72,7 @@ namespace Cv_App.ApiService.Controllers
                 return NotFound();
             }
 
-            var cvModel = await _context.CvModels.FindAsync(id);
+            var cvModel = await _cvDataService.GetById(id.Value);
             if (cvModel == null)
             {
                 return NotFound();
@@ -86,7 +85,7 @@ namespace Cv_App.ApiService.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] CvModel cvModel)
+        public IActionResult Edit(int id, [Bind("Id")] CvModel cvModel)
         {
             if (id != cvModel.Id)
             {
@@ -97,12 +96,11 @@ namespace Cv_App.ApiService.Controllers
             {
                 try
                 {
-                    _context.Update(cvModel);
-                    await _context.SaveChangesAsync();
+                    _cvDataService.Update(cvModel);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CvModelExists(cvModel.Id))
+                    if (!_cvDataService.Exists(cvModel.Id))
                     {
                         return NotFound();
                     }
@@ -124,8 +122,7 @@ namespace Cv_App.ApiService.Controllers
                 return NotFound();
             }
 
-            var cvModel = await _context.CvModels
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var cvModel = await _cvDataService.GetById(id.Value);
             if (cvModel == null)
             {
                 return NotFound();
@@ -139,15 +136,9 @@ namespace Cv_App.ApiService.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cvModel = await _context.CvModels.FindAsync(id);
-            _context.CvModels.Remove(cvModel);
-            await _context.SaveChangesAsync();
+            var cvModel = await _cvDataService.GetById(id);
+            _cvDataService.Delete(cvModel);
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool CvModelExists(int id)
-        {
-            return _context.CvModels.Any(e => e.Id == id);
         }
     }
 }
