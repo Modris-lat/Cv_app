@@ -37,6 +37,7 @@ namespace Cv_App.ApiService
 
             services.AddScoped<ICvDataService, CvDataService>();
             services.AddScoped<ICvAppContext, CvAppContext>();
+            services.AddScoped<IPropertyService, PropertyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
