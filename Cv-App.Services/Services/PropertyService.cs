@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Cv_App.Core.Models;
+﻿using Cv_App.Core.Models;
 using Cv_App.Data.Interfaces;
 using Cv_App.Services.Interfaces;
 

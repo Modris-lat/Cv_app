@@ -6,12 +6,17 @@
 
 <h1>Create</h1>
 
-<h4>CvModel</h4>
+<h4>CV</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CvTitle" class="control-label">Input CV Title</label>
+                <input asp-for="CvTitle" class="form-control" />
+                <span asp-validation-for="CvTitle" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

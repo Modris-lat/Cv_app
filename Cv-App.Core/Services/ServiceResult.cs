@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Cv_App.Core.Interfaces;
 
 namespace Cv_App.Core.Services

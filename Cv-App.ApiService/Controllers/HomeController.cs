@@ -1,11 +1,7 @@
 ﻿using Cv_App.ApiService.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Cv_App.ApiService.Controllers
 {

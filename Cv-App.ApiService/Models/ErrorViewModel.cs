@@ -1,5 +1,3 @@
-using System;
-
 namespace Cv_App.ApiService.Models
 {
     public class ErrorViewModel

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Cv_App.Core.Interfaces;
 using Cv_App.Core.Models;
@@ -19,6 +18,7 @@ namespace Cv_App.Services.Services
         {
             _ctx = context;
         }
+        
         public IQueryable<T> Query<T>() where T : Entity
         {
             return _ctx.Set<T>().AsQueryable();

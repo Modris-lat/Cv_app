@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cv_App.Core.Interfaces
+﻿namespace Cv_App.Core.Interfaces
 {
     public interface IEntity
     {

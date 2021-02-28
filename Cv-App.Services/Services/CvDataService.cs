@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cv_App.Core.Models;
-using Cv_App.Core.Services;
+﻿using Cv_App.Core.Models;
 using Cv_App.Data.Interfaces;
 using Cv_App.Services.Interfaces;
 

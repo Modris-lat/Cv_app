@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cv_App.Data.Interfaces;
+﻿using Cv_App.Data.Interfaces;
 
 namespace Cv_App.ApiService
 {
