@@ -1,7 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cv_App.Core.Models;
+using Cv_App.Data.Models;
 using Cv_App.Services.Interfaces;
 
 namespace Cv_App.ApiService.Controllers
@@ -18,7 +23,7 @@ namespace Cv_App.ApiService.Controllers
         // GET: CvModels
         public IActionResult Index()
         {
-            return View(_cvDataService.Get());
+            return View(_cvDataService.GetAllCvData().ToList());
         }
 
         // GET: CvModels/Details/5
@@ -29,7 +34,7 @@ namespace Cv_App.ApiService.Controllers
                 return NotFound();
             }
 
-            var cvModel = await _cvDataService.GetById(id.Value);
+            var cvModel = await _cvDataService.GetCvModelAsync(id.Value);
             if (cvModel == null)
             {
                 return NotFound();
@@ -49,7 +54,7 @@ namespace Cv_App.ApiService.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("CvTitle,Id")] CvModel cvModel)
+        public IActionResult Create([Bind("CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +72,7 @@ namespace Cv_App.ApiService.Controllers
                 return NotFound();
             }
 
-            var cvModel = await _cvDataService.GetById(id.Value);
+            var cvModel = await _cvDataService.GetCvModelAsync(id.Value);
             if (cvModel == null)
             {
                 return NotFound();
@@ -80,7 +85,7 @@ namespace Cv_App.ApiService.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("CvTitle,Id")] CvModel cvModel)
+        public IActionResult Edit(int id, [Bind("CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
         {
             if (id != cvModel.Id)
             {
@@ -117,7 +122,7 @@ namespace Cv_App.ApiService.Controllers
                 return NotFound();
             }
 
-            var cvModel = await _cvDataService.GetById(id.Value);
+            var cvModel = await _cvDataService.GetCvModelAsync(id.Value);
             if (cvModel == null)
             {
                 return NotFound();

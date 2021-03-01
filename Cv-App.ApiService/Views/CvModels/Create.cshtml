@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Add new</h1>
 
 <h4>CV</h4>
 <hr />
@@ -13,10 +13,33 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CvTitle" class="control-label">Input CV Title</label>
+                <label asp-for="CvTitle" class="control-label"></label>
                 <input asp-for="CvTitle" class="form-control" />
                 <span asp-validation-for="CvTitle" class="text-danger"></span>
             </div>
+            <h4>Personal Data</h4>
+            <div class="form-group">
+                <label asp-for="PersonalData.Name" class="control-label"></label>
+                <input asp-for="PersonalData.Name" class="form-control" />
+                <span asp-validation-for="PersonalData.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.LastName" class="control-label"></label>
+                <input asp-for="PersonalData.LastName" class="form-control" />
+                <span asp-validation-for="PersonalData.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.Email" class="control-label"></label>
+                <input asp-for="PersonalData.Email" class="form-control" />
+                <span asp-validation-for="PersonalData.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.PhoneNumber" class="control-label"></label>
+                <input asp-for="PersonalData.PhoneNumber" class="form-control" />
+                <span asp-validation-for="PersonalData.PhoneNumber" class="text-danger"></span>
+            </div>
+            <h4>Education</h4>
+            <h4>Work Experience</h4>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

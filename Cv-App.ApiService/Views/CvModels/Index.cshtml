@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Cv_App.Core.Models.CvModel>
 
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Index";
 }
 
-<h1>List of CV documents</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -15,7 +15,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CvTitle)
             </th>
-            <th></th>
+            <th>
+                Action
+            </th>
         </tr>
     </thead>
     <tbody>

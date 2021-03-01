@@ -11,6 +11,9 @@ namespace Cv_App.Data.Models
             base(options){}
 
         public DbSet<CvModel> CvModels { get; set; }
+        public DbSet<PersonalData> PersonalData { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<WorkExperience> WorkExperiences { get; set; }
         public DbSet<Property> Properties { get; set; }
 
         public async Task<int> SaveAsync()
