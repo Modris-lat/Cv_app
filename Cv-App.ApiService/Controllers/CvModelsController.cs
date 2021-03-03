@@ -56,10 +56,17 @@ namespace Cv_App.ApiService.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _cvDataService.Create(cvModel);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _cvDataService.Create(cvModel);
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Unable to save changes.");
             }
             return View(cvModel);
         }
