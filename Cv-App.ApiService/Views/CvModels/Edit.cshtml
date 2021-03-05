@@ -4,9 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>CvModel</h4>
+<h4>Edit</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,6 +15,89 @@
                 <input asp-for="CvTitle" class="form-control" />
                 <span asp-validation-for="CvTitle" class="text-danger"></span>
             </div>
+            <h5>Personal Data</h5>
+            <div class="form-group">
+                <label asp-for="PersonalData.Name" class="control-label"></label>
+                <input asp-for="PersonalData.Name" class="form-control" />
+                <span asp-validation-for="PersonalData.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.LastName" class="control-label"></label>
+                <input asp-for="PersonalData.LastName" class="form-control" />
+                <span asp-validation-for="PersonalData.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.PhoneNumber" class="control-label"></label>
+                <input asp-for="PersonalData.PhoneNumber" class="form-control" />
+                <span asp-validation-for="PersonalData.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.Email" class="control-label"></label>
+                <input asp-for="PersonalData.Email" class="form-control" />
+                <span asp-validation-for="PersonalData.Email" class="text-danger"></span>
+            </div>
+            <h5>Education</h5>
+            @for (int i = 0; i < Model.Educations.Count; i++)
+            {
+                <span>---------</span>
+                <div class="form-group">
+                    <label class="control-label">Degree</label>
+                    <input asp-for="Educations[i].Degree" class="form-control" />
+                    <span asp-validation-for="Educations[i].Degree" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Specialization</label>
+                    <input asp-for="Educations[i].Specialization" class="form-control" />
+                    <span asp-validation-for="Educations[i].Specialization" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">School</label>
+                    <input asp-for="Educations[i].School" class="form-control" />
+                    <span asp-validation-for="Educations[i].School" class="text-danger"></span>
+                </div>
+                <h6>Duration</h6>
+                <div class="form-group">
+                    <label class="control-label">Start Date</label>
+                    <input asp-for="Educations[i].StartDate" class="form-control" />
+                    <span asp-validation-for="Educations[i].StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">End Date </label>
+                    <input asp-for="Educations[i].EndDate" class="form-control" />
+                    <span asp-validation-for="Educations[i].EndDate" class="text-danger"></span>
+                </div>
+            }
+            <h5>Work Experience</h5>
+            @for (int i = 0; i < Model.WorkExperiences.Count; i++)
+            {
+                <span>---------</span>
+                <div class="form-group">
+                    <label class="control-label">Job Title</label>
+                    <input asp-for="WorkExperiences[i].JobTitle" class="form-control" />
+                    <span asp-validation-for="WorkExperiences[i].JobTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Company</label>
+                    <input asp-for="WorkExperiences[i].Company" class="form-control" />
+                    <span asp-validation-for="WorkExperiences[i].Company" class="text-danger"></span>
+                </div>
+                <h6>Duration</h6>
+                <div class="form-group">
+                    <label class="control-label">Start Date</label>
+                    <input asp-for="WorkExperiences[i].StartDate" class="form-control" />
+                    <span asp-validation-for="WorkExperiences[i].StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">End Date</label>
+                    <input asp-for="WorkExperiences[i].EndDate" class="form-control" />
+                    <span asp-validation-for="WorkExperiences[i].EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Job Description</label>
+                    <input asp-for="WorkExperiences[i].JobDescription" class="form-control" />
+                    <span asp-validation-for="WorkExperiences[i].JobDescription" class="text-danger"></span>
+                </div>
+            }
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

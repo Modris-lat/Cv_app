@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cv_App.Core.Models;
+using Cv_App.Data.Interfaces;
 using Cv_App.Data.Models;
 using Cv_App.Services.Interfaces;
 
@@ -92,31 +93,23 @@ namespace Cv_App.ApiService.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
         {
             if (id != cvModel.Id)
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _cvDataService.Update(cvModel);
+                    await _cvDataService.UpdateCv(cvModel);
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (DbUpdateException)
                 {
-                    if (!_cvDataService.Exists(cvModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "Unable to save changes.");
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(cvModel);
         }
@@ -146,6 +139,14 @@ namespace Cv_App.ApiService.Controllers
             var cvModel = await _cvDataService.GetById(id);
             _cvDataService.Delete(cvModel);
             return RedirectToAction(nameof(Index));
+        }
+
+        private void PopulateCvList(object selectEducation = null)
+        {
+            var educationsQuery = from d in _cvDataService.GetAllCvData()
+                orderby d.CvTitle
+                select d;
+            ViewBag.DepartmentID = new SelectList(educationsQuery, "Id", "CvTitle", selectEducation);
         }
     }
 }
