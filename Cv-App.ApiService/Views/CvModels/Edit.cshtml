@@ -5,63 +5,10 @@
 }
 
 <h4>Edit</h4>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
-<script>
-    $(document).ready(function () {
-        var count1 = 0;
-        $("#addEducation").bind("click", function () {
-            var index = count1;
-            $("#education").append("<div class=\"form-group\">" +
-                "<label>Degree</label>" +
-                "<input type=\"text\" name=\"Educations[" + index + "].Degree\" class=\"form-control\" id=\"" + index + "\"/>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>Specialization</label>" +
-                "<input type=\"text\" name=\"Educations[" + index + "].Specialization\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>School</label>" +
-                "<input type=\"text\" name=\"Educations[" + index + "].School\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>Start Date</label>" +
-                "<input type=\"text\" name=\"Educations[" + index + "].StartDate\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>End Date</label>" +
-                "<input type=\"text\" name=\"Educations[" + index + "].EndDate\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>");
-            count1 = count1 +1;
-        });
-        var count2 = 0;
-        $("#addWorkExperience").bind("click", function () {
-            var index = count2;
-            $("#work").append("<div class=\"form-group\">" +
-                "<label>Job Title</label>" +
-                "<input type=\"text\" name=\"WorkExperiences[" + index + "].JobTitle\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>Company</label>" +
-                "<input type=\"text\" name=\"WorkExperiences[" + index + "].Company\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>Start Date</label>" +
-                "<input type=\"text\" name=\"WorkExperiences[" + index + "].StartDate\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>End Date</label>" +
-                "<input type=\"text\" name=\"WorkExperiences[" + index + "].EndDate\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>" +
-                "<div class=\"form-group\">" +
-                "<label>Job Description</label>" +
-                "<input type=\"text\" name=\"WorkExperiences[" + index + "].JobDescription\" class=\"form-control\" id=\"" + index + "\"//>" +
-                "</div>");
-            count2 = count2 + 1;
-        });
-    });
-</script>
-<hr />
+<script src="~/js/functionsJs.js"></script>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -162,9 +109,28 @@
                     <span asp-validation-for="WorkExperiences[i].JobDescription" class="text-danger"></span>
                 </div>
             }
+            <h5>Other Information</h5>
+            <div class="form-group" id="other"></div>
+            <div class="form-group">
+                <input type="button" id="addAdditionalInformation" value="Add" />
+            </div>
+            @for (int i = 0; i < Model.Properties.Count; i++)
+            {
+                <span>---------</span>
+                <div class="form-group">
+                    <label class="control-label">Title</label>
+                    <input asp-for="Properties[i].Title" class="form-control" />
+                    <span asp-validation-for="Properties[i].Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Text Field</label>
+                    <input asp-for="Properties[i].Text" class="form-control" />
+                    <span asp-validation-for="Properties[i].Text" class="text-danger"></span>
+                </div>
+            }
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
             </div>
         </form>
     </div>

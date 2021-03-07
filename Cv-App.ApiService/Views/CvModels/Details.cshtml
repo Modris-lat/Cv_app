@@ -99,10 +99,20 @@
                 }
             </table>
         </dd>
+        <dt class="col-sm-2">
+            Other Information
+        </dt>
+        <dd class="col-sm-10"></dd>
         @foreach (var item in Model.Properties)
         {
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(modelItem => item.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.Text)
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(modelItem => item.Text)
