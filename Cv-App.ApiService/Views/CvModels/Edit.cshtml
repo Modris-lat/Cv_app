@@ -1,4 +1,5 @@
-﻿@model Cv_App.Core.Models.CvModel
+﻿@using System.Linq
+@model Cv_App.Core.Models.CvModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,7 +8,7 @@
 <h4>Edit</h4>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
-<script src="~/js/functionsJs.js"></script>
+<script src="~/js/editCvProperties.js"></script>
 
 <div class="row">
     <div class="col-md-4">
@@ -112,7 +113,7 @@
             <h5>Other Information</h5>
             <div class="form-group" id="other"></div>
             <div class="form-group">
-                <input type="button" id="addAdditionalInformation" value="Add" />
+                <input type="button" id="addAdditionalInformation" value="Add"/>
             </div>
             @for (int i = 0; i < Model.Properties.Count; i++)
             {
