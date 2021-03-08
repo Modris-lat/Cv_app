@@ -41,13 +41,9 @@
                 <span asp-validation-for="PersonalData.Email" class="text-danger"></span>
             </div>
             <h5>Education</h5>
-            <div class="form-group" id="education"></div>
-            <div class="form-group">
-                <input type="button" id="addEducation" value="Add" />
-            </div>
             @for (int i = 0; i < Model.Educations.Count; i++)
             {
-                <span>---------</span>
+                <span class="additionalEducation">###########</span>
                 <div class="form-group">
                     <label class="control-label">Degree</label>
                     <input asp-for="Educations[i].Degree" class="form-control" />
@@ -75,14 +71,14 @@
                     <span asp-validation-for="Educations[i].EndDate" class="text-danger"></span>
                 </div>
             }
-            <h5>Work Experience</h5>
-            <div class="form-group" id="work"></div>
+            <div class="form-group" id="education"></div>
             <div class="form-group">
-                <input type="button" id="addWorkExperience" value="Add" />
+                <input type="button" id="addEducation" value="Add" />
             </div>
+            <h5>Work Experience</h5>
             @for (int i = 0; i < Model.WorkExperiences.Count; i++)
             {
-                <span>---------</span>
+                <span class="additionalWorkExperience">###########</span>
                 <div class="form-group">
                     <label class="control-label">Job Title</label>
                     <input asp-for="WorkExperiences[i].JobTitle" class="form-control" />
@@ -110,14 +106,14 @@
                     <span asp-validation-for="WorkExperiences[i].JobDescription" class="text-danger"></span>
                 </div>
             }
-            <h5>Other Information</h5>
-            <div class="form-group" id="other"></div>
+            <div class="form-group" id="work"></div>
             <div class="form-group">
-                <input type="button" id="addAdditionalInformation" value="Add"/>
+                <input type="button" id="addWorkExperience" value="Add" />
             </div>
+            <h5>Other Information</h5>
             @for (int i = 0; i < Model.Properties.Count; i++)
             {
-                <span>---------</span>
+                <span class="additionalInfo">###########</span>
                 <div class="form-group">
                     <label class="control-label">Title</label>
                     <input asp-for="Properties[i].Title" class="form-control" />
@@ -129,6 +125,10 @@
                     <span asp-validation-for="Properties[i].Text" class="text-danger"></span>
                 </div>
             }
+            <div class="form-group" id="other"></div>
+            <div class="form-group">
+                <input type="button" id="addAdditionalInformation" value="Add" />
+            </div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <input type="submit" value="Save Changes" class="btn btn-primary" />
