@@ -4,7 +4,9 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+<div>
+    <a asp-action="Details" asp-route-id="@Model.Id">Back to Details</a>
+</div>
 <h4>Edit</h4>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
@@ -146,6 +148,9 @@
     </div>
 </div>
 
+<div>
+    <a asp-action="Details" asp-route-id="@Model.Id">Back to Details</a>
+</div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

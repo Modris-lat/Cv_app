@@ -3,7 +3,7 @@
         var index = $(".additionalEducation").length;
         $("#education").append(
             "<div class=\"form-group\" >" +
-            "<span class=\"additionalEducation\">###########</span>" +
+            "<span class=\"additionalEducation\">New</span>" +
             "<div class=\"form-group\">" +
             "<label>Degree</label>" +
             "<input type=\"text\" name=\"Educations[" + index + "].Degree\" class=\"form-control\"  />" +
@@ -32,7 +32,7 @@
         var index = $(".additionalWorkExperience").length;
         $("#work").append(
             "<div class=\"form-group\" >" +
-            "<span class=\"additionalWorkExperience\">###########</span>" +
+            "<span class=\"additionalWorkExperience\">New</span>" +
             "<div class=\"form-group\">" +
             "<label>Job Title</label>" +
             "<input type=\"text\" name=\"WorkExperiences[" + index + "].JobTitle\" class=\"form-control\"  required/>" +
@@ -61,7 +61,7 @@
         var index = $(".additionalInfo").length;
         $("#other").append(
             "<div class=\"form-group\" >" +
-            "<span class='additionalInfo'>###########</span>" +
+            "<span class='additionalInfo'>New</span>" +
             "<div class=\"form-group\"" +
             "<label>Title</label>" +
             "<input type=\"text\" name=\"Properties[" + index + "].Title\" class=\"form-control\" required/>" +
@@ -75,8 +75,44 @@
     });
     $(".removeElement").bind("click", function() {
         $(this).parent().remove();
+        $('.additionalInfo').each(function (index) {
+            $(this).closest("div").children("div").first().children("input").attr("name", "Properties[" + index + "].Title");
+            $(this).closest("div").children("div").last().children("input").attr("name", "Properties[" + index + "].Text");
+        });
+        $('.additionalWorkExperience').each(function (index) {
+            $(this).closest("div").children("div").first().children("input").attr("name", "WorkExperiences[" + index + "].JobTitle");
+            $(this).closest("div").children("div").eq(1).children("input").attr("name", "WorkExperiences[" + index + "].Company");
+            $(this).closest("div").children("div").eq(2).children("input").attr("name", "WorkExperiences[" + index + "].StartDate");
+            $(this).closest("div").children("div").eq(3).children("input").attr("name", "WorkExperiences[" + index + "].EndDate");
+            $(this).closest("div").children("div").last().children("input").attr("name", "WorkExperiences[" + index + "].JobDescription");
+        });
+        $('.additionalEducation').each(function (index) {
+            $(this).closest("div").children("div").first().children("input").attr("name", "Educations[" + index + "].Degree");
+            $(this).closest("div").children("div").eq(1).children("input").attr("name", "Educations[" + index + "].Specialization");
+            $(this).closest("div").children("div").eq(2).children("input").attr("name", "Educations[" + index + "].School");
+            $(this).closest("div").children("div").eq(3).children("input").attr("name", "Educations[" + index + "].StartDate");
+            $(this).closest("div").children("div").last().children("input").attr("name", "Educations[" + index + "].EndDate");
+        });
     });
     $(".form-group").on("click", ".removeNewElement", function () {
         $(this).parent().remove();
+        $('.additionalInfo').each(function (index) {
+            $(this).closest("div").children("div").first().children("input").attr("name", "Properties[" + index + "].Title");
+            $(this).closest("div").children("div").last().children("input").attr("name", "Properties[" + index + "].Text");
+        });
+        $('.additionalWorkExperience').each(function (index) {
+            $(this).closest("div").children("div").first().children("input").attr("name", "WorkExperiences[" + index + "].JobTitle");
+            $(this).closest("div").children("div").eq(1).children("input").attr("name", "WorkExperiences[" + index + "].Company");
+            $(this).closest("div").children("div").eq(2).children("input").attr("name", "WorkExperiences[" + index + "].StartDate");
+            $(this).closest("div").children("div").eq(3).children("input").attr("name", "WorkExperiences[" + index + "].EndDate");
+            $(this).closest("div").children("div").last().children("input").attr("name", "WorkExperiences[" + index + "].JobDescription");
+        });
+        $('.additionalEducation').each(function (index) {
+            $(this).closest("div").children("div").first().children("input").attr("name", "Educations[" + index + "].Degree");
+            $(this).closest("div").children("div").eq(1).children("input").attr("name", "Educations[" + index + "].Specialization");
+            $(this).closest("div").children("div").eq(2).children("input").attr("name", "Educations[" + index + "].School");
+            $(this).closest("div").children("div").eq(3).children("input").attr("name", "Educations[" + index + "].StartDate");
+            $(this).closest("div").children("div").last().children("input").attr("name", "Educations[" + index + "].EndDate");
+        });
     });
 });
