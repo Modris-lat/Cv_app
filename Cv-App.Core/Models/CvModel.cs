@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cv_App.Core.Models
 {
     public class CvModel: Entity
     {
+        [Required]
         [DisplayName("CV Title")]
         public string CvTitle { get; set; }
         [DisplayName("Personal Data")]

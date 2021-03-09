@@ -10,6 +10,7 @@ namespace Cv_App.Core.Models
     {
         public int CvModelId { get; set; }
         public string Degree { get; set; }
+        [Required]
         public string Specialization { get; set; }
         public string School { get; set; }
         public string StartDate { get; set; }
