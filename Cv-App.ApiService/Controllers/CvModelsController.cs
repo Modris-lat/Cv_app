@@ -58,9 +58,9 @@ namespace Cv_App.ApiService.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException e)
             {
-                ModelState.AddModelError("", "Unable to save changes.");
+                ModelState.AddModelError("", e.Message);
             }
             return View(cvModel);
         }
@@ -97,9 +97,9 @@ namespace Cv_App.ApiService.Controllers
                     await _cvDataService.UpdateCv(cvModel);
                     return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateException)
+                catch (DbUpdateException e)
                 {
-                    ModelState.AddModelError("", "Unable to save changes.");
+                    ModelState.AddModelError("", e.Message);
                 }
             }
             return View(cvModel);
