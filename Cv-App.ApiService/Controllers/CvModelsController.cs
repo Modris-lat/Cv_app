@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Cv_App.Core.Models;
-using Cv_App.Data.Interfaces;
-using Cv_App.Data.Models;
 using Cv_App.Services.Interfaces;
 
 namespace Cv_App.ApiService.Controllers
@@ -51,8 +46,6 @@ namespace Cv_App.ApiService.Controllers
         }
 
         // POST: CvModels/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
@@ -89,8 +82,6 @@ namespace Cv_App.ApiService.Controllers
         }
 
         // POST: CvModels/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CvTitle,PersonalData,Educations,WorkExperiences,Properties")] CvModel cvModel)
@@ -139,14 +130,6 @@ namespace Cv_App.ApiService.Controllers
             var cvModel = await _cvDataService.GetById(id);
             _cvDataService.Delete(cvModel);
             return RedirectToAction(nameof(Index));
-        }
-
-        private void PopulateCvList(object selectEducation = null)
-        {
-            var educationsQuery = from d in _cvDataService.GetAllCvData()
-                orderby d.CvTitle
-                select d;
-            ViewBag.DepartmentID = new SelectList(educationsQuery, "Id", "CvTitle", selectEducation);
         }
     }
 }
