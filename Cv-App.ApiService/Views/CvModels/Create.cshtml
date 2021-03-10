@@ -1,0 +1,72 @@
+﻿@model Cv_App.Core.Models.CvModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add new</h1>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/addCvProperties.js"></script>
+
+
+<h4>CV</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CvTitle" class="control-label"></label>
+                <input asp-for="CvTitle" class="form-control" />
+                <span asp-validation-for="CvTitle" class="text-danger"></span>
+            </div>
+            <h4>Personal Data</h4>
+            <div class="form-group">
+                <label asp-for="PersonalData.Name" class="control-label"></label>
+                <input asp-for="PersonalData.Name" class="form-control" />
+                <span asp-validation-for="PersonalData.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.LastName" class="control-label"></label>
+                <input asp-for="PersonalData.LastName" class="form-control" />
+                <span asp-validation-for="PersonalData.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.Email" class="control-label"></label>
+                <input asp-for="PersonalData.Email" class="form-control" />
+                <span asp-validation-for="PersonalData.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalData.PhoneNumber" class="control-label"></label>
+                <input asp-for="PersonalData.PhoneNumber" class="form-control" />
+                <span asp-validation-for="PersonalData.PhoneNumber" class="text-danger"></span>
+            </div>
+            <h4>Education</h4>
+            <div class="form-group" id="education"></div>
+            <div class="form-group">
+                <input type="button" id="addEducation" value="Add" />
+            </div>
+            <h4>Work Experience</h4>
+            <div class="form-group" id="work"></div>
+            <div class="form-group">
+                <input type="button" id="addWorkExperience" value="Add" />
+            </div>
+            <h4>Other Information</h4>
+            <div class="form-group" id="other"></div>
+            <div class="form-group">
+                <input type="button" id="addAdditionalInformation" value="Add" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
