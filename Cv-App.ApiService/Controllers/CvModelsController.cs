@@ -17,9 +17,9 @@ namespace Cv_App.ApiService.Controllers
         }
 
         // GET: CvModels
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_cvDataService.GetAllCvData().ToList());
+            return View(await _cvDataService.GetAllCvData());
         }
 
         // GET: CvModels/Details/5
