@@ -9,7 +9,7 @@ namespace Cv_App.Services.Interfaces
     public interface ICvDataService: IEntityService<CvModel>
     {
         Task<CvModel> GetCvModelAsync(int id);
-        IEnumerable<CvModel> GetAllCvData();
+        Task<IEnumerable<CvModel>> GetAllCvData();
         Task<ServiceResult> UpdateCv(CvModel cvModel);
     }
 }

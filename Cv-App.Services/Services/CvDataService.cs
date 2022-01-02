@@ -10,15 +10,13 @@ namespace Cv_App.Services.Services
 {
     public class CvDataService: EntityService<CvModel>, ICvDataService
     {
-        private readonly ICvAppContext _ctx;
         public CvDataService(ICvAppContext ctx) : base(ctx)
         {
-            _ctx = ctx;
         }
 
         public async Task<CvModel> GetCvModelAsync(int id)
         {
-            return await _ctx.CvModels
+            return await Query<CvModel>()
                 .Include(x => x.PersonalData)
                 .Include(y => y.Educations)
                 .Include(s => s.WorkExperiences)
@@ -27,19 +25,20 @@ namespace Cv_App.Services.Services
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
-        public IEnumerable<CvModel> GetAllCvData()
+        public async Task<IEnumerable<CvModel>> GetAllCvData()
         {
-            return _ctx.CvModels
+            return await Query<CvModel>()
                 .Include(p => p.PersonalData)
                 .Include(e => e.Educations)
                 .Include(w => w.WorkExperiences)
                 .Include(p => p.Properties)
-                .AsNoTracking();
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         public async Task<ServiceResult> UpdateCv(CvModel cvModel)
         {
-            var model = await _ctx.CvModels
+            var model = await Query<CvModel>()
                 .Include(x => x.PersonalData)
                 .Include(y => y.Educations)
                 .Include(s => s.WorkExperiences)

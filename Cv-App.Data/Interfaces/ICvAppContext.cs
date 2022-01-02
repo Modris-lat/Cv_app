@@ -12,6 +12,5 @@ namespace Cv_App.Data.Interfaces
         int SaveChanges();
         Task<int> SaveAsync();
         Task EnsureDataBaseCreated();
-        DbSet<CvModel> CvModels { get; set; }
     }
 }
