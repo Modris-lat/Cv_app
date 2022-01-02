@@ -1,3 +1,3 @@
 # cv_app
 
-Cv-app privides CV storage with features: create new, dynamic editing, delete and details view.
+Cv-app privides simple UI with CRUD operations using .NET 5 ASP.NET (MVC, Entity framework) with clean architecture and SOLID example.
